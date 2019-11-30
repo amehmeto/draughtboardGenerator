@@ -1,0 +1,12 @@
+{
+  "name": "draughtboardGenerator",
+  "version": "1.0.0",
+  "dependencies": {
+    "child_process": "^1.0.2",
+    "jest": "^24.9.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "jest"
+  }
+}
