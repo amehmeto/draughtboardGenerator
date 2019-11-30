@@ -1,15 +1,24 @@
+const DEFAULT_HEIGHT = 6;
+
 class Draughtboard {
-    static generator(height = 6) {
-        const EVEN_LINE = ['white', 'black', 'white', 'black', 'white', 'black'];
-        const ODD_LINE = ['black', 'white', 'black', 'white', 'black', 'white'];
-        let LINE;
+    static generator(height = DEFAULT_HEIGHT) {
         let finalDraughtboard = [];
 
-        while (height !== 0) {
-            LINE = (this.isProcessedLineEven(height--)) ? EVEN_LINE : ODD_LINE;
-            finalDraughtboard.unshift(LINE);
-        }
+        while (this.hasLineToBeProcessed(height))
+            this.generateLine(height--, finalDraughtboard);
         return finalDraughtboard;
+    }
+
+    static generateLine(height, finalDraughtboard) {
+        const EVEN_LINE = ['white', 'black', 'white', 'black', 'white', 'black'];
+        const ODD_LINE = ['black', 'white', 'black', 'white', 'black', 'white'];
+
+        let LINE = (this.isProcessedLineEven(height)) ? EVEN_LINE : ODD_LINE;
+        finalDraughtboard.unshift(LINE);
+    }
+
+    static hasLineToBeProcessed(height) {
+        return height !== 0;
     }
 
     static isProcessedLineEven(height) {
