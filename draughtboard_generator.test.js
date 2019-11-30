@@ -8,12 +8,14 @@ describe('Checking everything works', () => {
 
 it('should generate standard draughtboard', function () {
 	const EXPECTED_DRAUGHTBOARD =
-		"[x][o][x][o][x][o]\n" +
-		"[o][x][o][x][o][x]\n" +
-		"[x][o][x][o][x][o]\n" +
-		"[o][x][o][x][o][x]\n" +
-		"[x][o][x][o][x][o]\n" +
-		"[o][x][o][x][o][x]\n";
+		[
+			['black','white','black','white','black','white'],
+			['white','black','white','black','white','black'],
+			['black','white','black','white','black','white'],
+			['white','black','white','black','white','black'],
+			['black','white','black','white','black','white'],
+			['white','black','white','black','white','black'],
+		];
 	const GENERATED_DRAUGHTBOARD = Draughtboard.generator();
-	expect(GENERATED_DRAUGHTBOARD).toBe(EXPECTED_DRAUGHTBOARD);
+	expect(GENERATED_DRAUGHTBOARD).toStrictEqual(EXPECTED_DRAUGHTBOARD);
 });

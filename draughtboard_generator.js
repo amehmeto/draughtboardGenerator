@@ -1,13 +1,13 @@
 class Draughtboard {
     static generator() {
-        const STANDARD_DRAUGHTBOARD = "[x][o][x][o][x][o]\n" +
-            "[o][x][o][x][o][x]\n" +
-            "[x][o][x][o][x][o]\n" +
-            "[o][x][o][x][o][x]\n" +
-            "[x][o][x][o][x][o]\n" +
-            "[o][x][o][x][o][x]\n";
-
-        return STANDARD_DRAUGHTBOARD;
+        return [
+            ['black','white','black','white','black','white'],
+            ['white','black','white','black','white','black'],
+            ['black','white','black','white','black','white'],
+            ['white','black','white','black','white','black'],
+            ['black','white','black','white','black','white'],
+            ['white','black','white','black','white','black'],
+        ];
     }
 }
 
