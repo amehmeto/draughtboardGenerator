@@ -18,7 +18,7 @@ it('should generate standard draughtboard', () => {
 			['white','black','white','black','white','black'],
 		];
 	// Act
-	const GENERATED_DRAUGHTBOARD = Draughtboard.generator();
+	const GENERATED_DRAUGHTBOARD = Draughtboard.generator(null, null);
 	// Assert
 	expect(GENERATED_DRAUGHTBOARD).toStrictEqual(EXPECTED_DRAUGHTBOARD);
 });
@@ -31,7 +31,7 @@ it('should generate one line draughtboard', () => {
 		];
 	const HEIGHT = 1;
 	// Act
-	const GENERATED_DRAUGHTBOARD = Draughtboard.generator(HEIGHT);
+	const GENERATED_DRAUGHTBOARD = Draughtboard.generator(HEIGHT, null);
 	// Assert
     expect(GENERATED_DRAUGHTBOARD).toStrictEqual(EXPECTED_DRAUGHTBOARD);
 });
@@ -45,7 +45,7 @@ it('should generate two lines draughtboard and default width', () => {
 		];
 	const HEIGHT = 2;
 	// Act
-	const GENERATED_DRAUGHTBOARD = Draughtboard.generator(HEIGHT);
+	const GENERATED_DRAUGHTBOARD = Draughtboard.generator(HEIGHT, null);
 	// Assert
 	expect(GENERATED_DRAUGHTBOARD).toStrictEqual(EXPECTED_DRAUGHTBOARD);
 });
@@ -64,7 +64,7 @@ it('should generate seven lines draughtboard and default width', () => {
 		];
 	const HEIGHT = 7;
 	// Act
-	const GENERATED_DRAUGHTBOARD = Draughtboard.generator(HEIGHT);
+	const GENERATED_DRAUGHTBOARD = Draughtboard.generator(HEIGHT, null);
 	// Assert
 	expect(GENERATED_DRAUGHTBOARD).toStrictEqual(EXPECTED_DRAUGHTBOARD);
 });
@@ -83,7 +83,7 @@ it('should generate four cell width and default lines', () => {
 		];
 	const WIDTH = 4;
 	// Act
-	const GENERATED_DRAUGHTBOARD = Draughtboard.generator(WIDTH);
+	const GENERATED_DRAUGHTBOARD = Draughtboard.generator(null, WIDTH);
 	// Assert
-	expect(GENERATED_DRAUGHTBOARD).toStrictEqual(EXPECTED_DRAUGHTBOARD);dw
+	expect(GENERATED_DRAUGHTBOARD).toStrictEqual(EXPECTED_DRAUGHTBOARD);
 });

@@ -1,9 +1,13 @@
-const DEFAULT_HEIGHT = 6;
+const DEFAULT = 6;
 
 class Draughtboard {
-    static generator(height = DEFAULT_HEIGHT) {
+    static generator(height, width) {
         let finalDraughtboard = [];
 
+        if (height === null)
+            height = DEFAULT;
+        if (width === null)
+            width = DEFAULT;
         while (this.hasLineToBeProcessed(height))
             this.generateLine(height--, finalDraughtboard);
         return finalDraughtboard;
