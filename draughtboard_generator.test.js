@@ -1,3 +1,4 @@
+const Draughtboard = require('./draughtboard_generator');
 
 describe('Checking everything works', () => {
 	it('should do nothing but run', () => {
@@ -13,6 +14,6 @@ it('should generate standard draughtboard', function () {
 		"[o][x][o][x][o][x]\n" +
 		"[x][o][x][o][x][o]\n" +
 		"[o][x][o][x][o][x]\n";
-	const GENERATED_DRAUGHTBOARD = draughtboardGenerator();
+	const GENERATED_DRAUGHTBOARD = Draughtboard.generator();
 	expect(GENERATED_DRAUGHTBOARD).toBe(EXPECTED_DRAUGHTBOARD);
 });
