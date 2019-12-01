@@ -79,7 +79,6 @@ it('should generate four cell width and default lines', () => {
 			['white','black','white','black'],
 			['black','white','black','white'],
 			['white','black','white','black'],
-			['black','white','black','white'],
 		];
 	const WIDTH = 4;
 	// Act

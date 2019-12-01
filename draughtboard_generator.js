@@ -4,21 +4,42 @@ class Draughtboard {
     static generator(height, width) {
         let finalDraughtboard = [];
 
+        const parameters = this.initializeWithDefaultWhenNull(height, width);
+        height = parameters.height;
+        width = parameters.width;
+
+        while (this.hasLineToBeProcessed(height))
+            this.generateLines(height--, width, finalDraughtboard);
+        return finalDraughtboard;
+    }
+
+    static initializeWithDefaultWhenNull(height, width) {
         if (height === null)
             height = DEFAULT;
         if (width === null)
             width = DEFAULT;
-        while (this.hasLineToBeProcessed(height))
-            this.generateLine(height--, finalDraughtboard);
-        return finalDraughtboard;
+        return {height, width};
     }
 
-    static generateLine(height, finalDraughtboard) {
-        const EVEN_LINE = ['white', 'black', 'white', 'black', 'white', 'black'];
-        const ODD_LINE = ['black', 'white', 'black', 'white', 'black', 'white'];
+    static generateLines(height, width, finalDraughtboard) {
+        const EVEN_LINE = this.generateCells('even', width);
+        const ODD_LINE = this.generateCells('odd', width);
 
         let LINE = (this.isProcessedLineEven(height)) ? EVEN_LINE : ODD_LINE;
         finalDraughtboard.unshift(LINE);
+    }
+
+    static generateCells(oddity, width) {
+        let cells = [];
+        while (width) {
+            let CELL;
+            if (oddity === 'even')
+                CELL = (width-- % 2 === 0) ? 'white' : 'black';
+            else
+                CELL = !(width-- % 2 === 0) ? 'white' : 'black';
+            cells.push(CELL);
+        }
+        return cells;
     }
 
     static hasLineToBeProcessed(height) {
