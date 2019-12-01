@@ -174,7 +174,7 @@ describe('Draughtboard generator CLI', () => {
 	});
 
 	it('should display 1 line default board with --height=1 parameter', ()  => {
-		return shellExec('node checkerboard-generator').
+		return shellExec('node checkerboard-generator --height=1').
 		then((stdout) => {
 			expect(stdout.stdout).toBe(
 				"[x][o][x][o][x][o]"
