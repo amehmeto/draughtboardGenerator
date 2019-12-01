@@ -1,7 +1,12 @@
 const DEFAULT = 6;
 
 class Draughtboard {
-    static generator(height, width) {
+    constructor(height, width){
+        this.height = height;
+        this.width = width;
+        this.cellsLayout = this.generator(this.height, this.width);
+    }
+    generator(height, width) {
         let finalDraughtboard = [];
 
         const parameters = this.initializeWithDefaultWhenNull(height, width);
@@ -13,7 +18,7 @@ class Draughtboard {
         return finalDraughtboard;
     }
 
-    static initializeWithDefaultWhenNull(height, width) {
+    initializeWithDefaultWhenNull(height, width) {
         if (height === null)
             height = DEFAULT;
         if (width === null)
@@ -21,7 +26,7 @@ class Draughtboard {
         return {height, width};
     }
 
-    static generateLines(height, width, draughtboard) {
+    generateLines(height, width, draughtboard) {
         const EVEN_LINE = this.generateCells('even', width);
         const ODD_LINE = this.generateCells('odd', width);
 
@@ -29,30 +34,30 @@ class Draughtboard {
         draughtboard.unshift(LINE);
     }
 
-    static generateCells(lineOddity, width) {
+    generateCells(lineOddity, width) {
         let cells = [];
         while (width)
             this.generateCell(lineOddity, width--, cells);
         return cells;
     }
 
-    static generateCell(lineOddity, width, cells) {
+    generateCell(lineOddity, width, cells) {
         const CELL = this.populateAccordingToOddity(lineOddity, width);
         cells.push(CELL);
     }
 
-    static populateAccordingToOddity(lineOddity, width) {
+    populateAccordingToOddity(lineOddity, width) {
         if (lineOddity === 'even')
             return (width % 2 === 0) ? 'white' : 'black';
         else
             return !(width % 2 === 0) ? 'white' : 'black';
     }
 
-    static hasLineToBeProcessed(height) {
+    hasLineToBeProcessed(height) {
         return height !== 0;
     }
 
-    static isProcessedLineEven(height) {
+    isProcessedLineEven(height) {
         return height % 2 === 0;
     }
 }

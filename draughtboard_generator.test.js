@@ -19,9 +19,9 @@ describe('Draughtboard generation business logic', () => {
 				['white','black','white','black','white','black'],
 			];
 		// Act
-		const GENERATED_DRAUGHTBOARD = Draughtboard.generator(null, null);
+		const GENERATED_DRAUGHTBOARD = new Draughtboard(null, null);
 		// Assert
-		expect(GENERATED_DRAUGHTBOARD).toStrictEqual(EXPECTED_DRAUGHTBOARD);
+		expect(GENERATED_DRAUGHTBOARD.cellsLayout).toStrictEqual(EXPECTED_DRAUGHTBOARD);
 	});
 
 	it('should generate one line draughtboard', () => {
@@ -32,9 +32,9 @@ describe('Draughtboard generation business logic', () => {
 			];
 		const HEIGHT = 1;
 		// Act
-		const GENERATED_DRAUGHTBOARD = Draughtboard.generator(HEIGHT, null);
+		const GENERATED_DRAUGHTBOARD = new Draughtboard(HEIGHT, null);
 		// Assert
-		expect(GENERATED_DRAUGHTBOARD).toStrictEqual(EXPECTED_DRAUGHTBOARD);
+		expect(GENERATED_DRAUGHTBOARD.cellsLayout).toStrictEqual(EXPECTED_DRAUGHTBOARD);
 	});
 
 	it('should generate two lines draughtboard and default width', () => {
@@ -46,9 +46,9 @@ describe('Draughtboard generation business logic', () => {
 			];
 		const HEIGHT = 2;
 		// Act
-		const GENERATED_DRAUGHTBOARD = Draughtboard.generator(HEIGHT, null);
+		const GENERATED_DRAUGHTBOARD = new Draughtboard(HEIGHT, null);
 		// Assert
-		expect(GENERATED_DRAUGHTBOARD).toStrictEqual(EXPECTED_DRAUGHTBOARD);
+		expect(GENERATED_DRAUGHTBOARD.cellsLayout).toStrictEqual(EXPECTED_DRAUGHTBOARD);
 	});
 
 	it('should generate seven lines draughtboard and default width', () => {
@@ -65,9 +65,9 @@ describe('Draughtboard generation business logic', () => {
 			];
 		const HEIGHT = 7;
 		// Act
-		const GENERATED_DRAUGHTBOARD = Draughtboard.generator(HEIGHT, null);
+		const GENERATED_DRAUGHTBOARD = new Draughtboard(HEIGHT, null);
 		// Assert
-		expect(GENERATED_DRAUGHTBOARD).toStrictEqual(EXPECTED_DRAUGHTBOARD);
+		expect(GENERATED_DRAUGHTBOARD.cellsLayout).toStrictEqual(EXPECTED_DRAUGHTBOARD);
 	});
 
 	it('should generate four cells width and default lines', () => {
@@ -83,9 +83,9 @@ describe('Draughtboard generation business logic', () => {
 			];
 		const WIDTH = 4;
 		// Act
-		const GENERATED_DRAUGHTBOARD = Draughtboard.generator(null, WIDTH);
+		const GENERATED_DRAUGHTBOARD = new Draughtboard(null, WIDTH);
 		// Assert
-		expect(GENERATED_DRAUGHTBOARD).toStrictEqual(EXPECTED_DRAUGHTBOARD);
+		expect(GENERATED_DRAUGHTBOARD.cellsLayout).toStrictEqual(EXPECTED_DRAUGHTBOARD);
 	});
 
 	it('should generate two cells width and default lines', () => {
@@ -101,9 +101,26 @@ describe('Draughtboard generation business logic', () => {
 			];
 		const WIDTH = 2;
 		// Act
-		const GENERATED_DRAUGHTBOARD = Draughtboard.generator(null, WIDTH);
+		const GENERATED_DRAUGHTBOARD = new Draughtboard(null, WIDTH);
 		// Assert
-		expect(GENERATED_DRAUGHTBOARD).toStrictEqual(EXPECTED_DRAUGHTBOARD);
+		expect(GENERATED_DRAUGHTBOARD.cellsLayout).toStrictEqual(EXPECTED_DRAUGHTBOARD);
 	});
 });
 
+describe('Draughtboard displaying', () => {
+	it('should display black as [x] and white as [o] by default', () => {
+		//Arrange
+		const DEFAULT_DRAUGHTBOARD = new Draughtboard(null, null);
+		const EXPECTED_DISPLAY =
+			"[x][o][x][o][x][o]" +
+			"[o][x][o][x][o][x]" +
+			"[x][o][x][o][x][o]" +
+			"[o][x][o][x][o][x]" +
+			"[x][o][x][o][x][o]" +
+			"[o][x][o][x][o][x]";
+		// Act
+		const GENERATED_DISPLAY = DEFAULT_DRAUGHTBOARD.display();
+		// Assert
+		expect(GENERATED_DISPLAY).toStrictEqual(EXPECTED_DISPLAY);
+	})
+});
