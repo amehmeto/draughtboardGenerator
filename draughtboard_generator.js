@@ -47,10 +47,13 @@ class Draughtboard {
     }
 
     populateAccordingToOddity(lineOddity, width) {
-        if (lineOddity === 'even')
-            return (width % 2 === 0) ? 'white' : 'black';
-        else
-            return !(width % 2 === 0) ? 'white' : 'black';
+        const IS_CELL_EVEN = width % 2 === 0;
+        return (lineOddity === 'even') ?
+            this.chooseBlackOrWhite(IS_CELL_EVEN) : this.chooseBlackOrWhite(!IS_CELL_EVEN);
+    }
+
+    chooseBlackOrWhite(isCellEven) {
+        return (isCellEven) ? 'white' : 'black';
     }
 
     hasLineToBeProcessed(height) {
