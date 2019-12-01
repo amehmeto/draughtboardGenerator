@@ -69,7 +69,7 @@ it('should generate seven lines draughtboard and default width', () => {
 	expect(GENERATED_DRAUGHTBOARD).toStrictEqual(EXPECTED_DRAUGHTBOARD);
 });
 
-it('should generate four cell width and default lines', () => {
+it('should generate four cells width and default lines', () => {
 	// Arrange
 	const EXPECTED_DRAUGHTBOARD =
 		[
@@ -81,6 +81,24 @@ it('should generate four cell width and default lines', () => {
 			['white','black','white','black'],
 		];
 	const WIDTH = 4;
+	// Act
+	const GENERATED_DRAUGHTBOARD = Draughtboard.generator(null, WIDTH);
+	// Assert
+	expect(GENERATED_DRAUGHTBOARD).toStrictEqual(EXPECTED_DRAUGHTBOARD);
+});
+
+it('should generate two cells width and default lines', () => {
+	// Arrange
+	const EXPECTED_DRAUGHTBOARD =
+		[
+			['black','white'],
+			['white','black'],
+			['black','white'],
+			['white','black'],
+			['black','white'],
+			['white','black'],
+		];
+	const WIDTH = 2;
 	// Act
 	const GENERATED_DRAUGHTBOARD = Draughtboard.generator(null, WIDTH);
 	// Assert
