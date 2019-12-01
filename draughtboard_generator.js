@@ -63,18 +63,30 @@ class Draughtboard {
 
     display() {
         const CELLS_LAYOUT = this.cellsLayout;
-        const DRESSED_CELLS = CELLS_LAYOUT.map(
-            (line) => line.map(
-                (cell) => (cell === 'black') ? '[x]' : '[o]'
-            )
-        );
+        const DRESSED_CELLS = CELLS_LAYOUT.map(this.dressCellsLineByLine());
+        return this.accumulateLines(DRESSED_CELLS);
+    }
+
+    accumulateLines(DRESSED_CELLS) {
         let dressedLines = '';
-        for (let line of DRESSED_CELLS) {
-            for (let cell of line)
-                dressedLines += cell;
-            dressedLines += "\n";
-        }
+
+        for (let line of DRESSED_CELLS)
+            dressedLines = this.accumulateCells(line, dressedLines) + "\n";
         return dressedLines;
+    }
+
+    accumulateCells(line, dressedLines) {
+        for (let cell of line)
+            dressedLines += cell;
+        return  dressedLines;
+    }
+
+    dressCellsLineByLine() {
+        return (line) => line.map(this.dressCells());
+    }
+
+    dressCells() {
+        return (cell) => (cell === 'black') ? '[x]' : '[o]';
     }
 }
 
