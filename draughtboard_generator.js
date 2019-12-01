@@ -9,9 +9,9 @@ class Draughtboard {
     generator(height, width) {
         let finalDraughtboard = [];
 
-        const parameters = this.initializeWithDefaultWhenNull(height, width);
-        height = parameters.height;
-        width = parameters.width;
+        const SIZE_PARAMETERS = this.initializeWithDefaultWhenNull(height, width);
+        height = SIZE_PARAMETERS.height;
+        width = SIZE_PARAMETERS.width;
 
         while (this.hasLineToBeProcessed(height))
             this.generateLines(height--, width, finalDraughtboard);
@@ -19,9 +19,9 @@ class Draughtboard {
     }
 
     initializeWithDefaultWhenNull(height, width) {
-        if (height === null)
+        if (!height)
             height = DEFAULT;
-        if (width === null)
+        if (!width)
             width = DEFAULT;
         return {height, width};
     }
@@ -63,13 +63,19 @@ class Draughtboard {
 
     display(black, white) {
         const CELLS_LAYOUT = this.cellsLayout;
+        const DISPLAY_PARAMETERS = this.initializeDisplayParametersWhenNull(black, white);
+        black = DISPLAY_PARAMETERS.black;
+        white = DISPLAY_PARAMETERS.white;
+        const DRESSED_CELLS = CELLS_LAYOUT.map(this.dressCellsLineByLine(black, white));
+        return this.accumulateLines(DRESSED_CELLS);
+    }
 
+    initializeDisplayParametersWhenNull(black, white) {
         if (!black)
             black = 'x';
         if (!white)
             white = 'o';
-        const DRESSED_CELLS = CELLS_LAYOUT.map(this.dressCellsLineByLine(black, white));
-        return this.accumulateLines(DRESSED_CELLS);
+        return {black, white};
     }
 
     dressCellsLineByLine(black, white) {
