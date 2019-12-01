@@ -1,4 +1,5 @@
 const Draughtboard = require('./draughtboard_generator');
+const shellExec = require("shell-exec");
 
 describe('Checking everything works', () => {
 	it('should do nothing but run', () => {
@@ -117,7 +118,7 @@ describe('Draughtboard displaying', () => {
 			"[x][o][x][o][x][o]\n" +
 			"[o][x][o][x][o][x]\n" +
 			"[x][o][x][o][x][o]\n" +
-			"[o][x][o][x][o][x]\n";
+			"[o][x][o][x][o][x]";
 		// Act
 		const GENERATED_DISPLAY = DEFAULT_DRAUGHTBOARD.display(null, null);
 		// Assert
@@ -133,7 +134,7 @@ describe('Draughtboard displaying', () => {
 			"[x][-][x][-][x][-]\n" +
 			"[-][x][-][x][-][x]\n" +
 			"[x][-][x][-][x][-]\n" +
-			"[-][x][-][x][-][x]\n";
+			"[-][x][-][x][-][x]";
 		// Act
 		const GENERATED_DISPLAY = DEFAULT_DRAUGHTBOARD.display(null, '-');
 		// Assert
@@ -149,10 +150,27 @@ describe('Draughtboard displaying', () => {
 			"[b][w][b][w][b][w]\n" +
 			"[w][b][w][b][w][b]\n" +
 			"[b][w][b][w][b][w]\n" +
-			"[w][b][w][b][w][b]\n";
+			"[w][b][w][b][w][b]";
 		// Act
 		const GENERATED_DISPLAY = DEFAULT_DRAUGHTBOARD.display('b', 'w');
 		// Assert
 		expect(GENERATED_DISPLAY).toStrictEqual(EXPECTED_DISPLAY);
 	});
+});
+
+describe('Draughtboard generator CLI', () => {
+	it('should display default board', ()  => {
+		return shellExec('node checkerboard-generator').
+			then((stdout) => {
+			expect(stdout.stdout).toBe(
+					"[x][o][x][o][x][o]\n" +
+					"[o][x][o][x][o][x]\n" +
+					"[x][o][x][o][x][o]\n" +
+					"[o][x][o][x][o][x]\n" +
+					"[x][o][x][o][x][o]\n" +
+					"[o][x][o][x][o][x]\n"
+			);
+		})
+	});
+
 });

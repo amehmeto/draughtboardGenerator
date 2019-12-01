@@ -89,12 +89,12 @@ class Draughtboard {
         return (cell) => (cell === 'black') ? '[' + black + ']' : '[' + white + ']';
     }
 
-    accumulateLines(DRESSED_CELLS) {
+    accumulateLines(dressedCells) {
         let dressedLines = '';
 
-        for (let line of DRESSED_CELLS)
+        for (let line of dressedCells)
             dressedLines = this.accumulateCells(line, dressedLines) + "\n";
-        return dressedLines;
+        return dressedLines.substring(0, dressedLines.length - 1);
     }
 
     accumulateCells(line, dressedLines) {

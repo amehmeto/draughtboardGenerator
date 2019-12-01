@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "dependencies": {
     "child_process": "^1.0.2",
-    "jest": "^24.9.0"
+    "jest": "^24.9.0",
+    "shell-exec": "^1.0.2"
   },
   "devDependencies": {},
   "scripts": {
