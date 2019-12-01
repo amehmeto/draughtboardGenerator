@@ -31,15 +31,21 @@ class Draughtboard {
 
     static generateCells(oddity, width) {
         let cells = [];
-        while (width) {
-            let CELL;
-            if (oddity === 'even')
-                CELL = (width-- % 2 === 0) ? 'white' : 'black';
-            else
-                CELL = !(width-- % 2 === 0) ? 'white' : 'black';
-            cells.push(CELL);
-        }
+        while (width)
+            this.generateCell(oddity, width--, cells);
         return cells;
+    }
+
+    static generateCell(oddity, width, cells) {
+        const CELL = this.populateAccordingToOddity(oddity, width);
+        cells.push(CELL);
+    }
+
+    static populateAccordingToOddity(oddity, width) {
+        if (oddity === 'even')
+            return (width % 2 === 0) ? 'white' : 'black';
+        else
+            return !(width % 2 === 0) ? 'white' : 'black';
     }
 
     static hasLineToBeProcessed(height) {
