@@ -60,6 +60,16 @@ class Draughtboard {
     isProcessedLineEven(height) {
         return height % 2 === 0;
     }
+
+    display() {
+        const CELLS_LAYOUT = this.cellsLayout;
+        return CELLS_LAYOUT.map((cell) => {
+            if (cell === 'black')
+                cell = '[x]';
+            if (cell === 'white')
+                cell = '[o]';
+        });
+    }
 }
 
 module.exports = Draughtboard;

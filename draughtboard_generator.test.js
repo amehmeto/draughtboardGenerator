@@ -112,10 +112,10 @@ describe('Draughtboard displaying', () => {
 		//Arrange
 		const DEFAULT_DRAUGHTBOARD = new Draughtboard(null, null);
 		const EXPECTED_DISPLAY =
-			"[x][o][x][o][x][o]" +
-			"[o][x][o][x][o][x]" +
-			"[x][o][x][o][x][o]" +
-			"[o][x][o][x][o][x]" +
+			"[x][o][x][o][x][o]\n" +
+			"[o][x][o][x][o][x]\n" +
+			"[x][o][x][o][x][o]\n" +
+			"[o][x][o][x][o][x]\n" +
 			"[x][o][x][o][x][o]" +
 			"[o][x][o][x][o][x]";
 		// Act
