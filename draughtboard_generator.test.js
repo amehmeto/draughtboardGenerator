@@ -116,8 +116,8 @@ describe('Draughtboard displaying', () => {
 			"[o][x][o][x][o][x]\n" +
 			"[x][o][x][o][x][o]\n" +
 			"[o][x][o][x][o][x]\n" +
-			"[x][o][x][o][x][o]" +
-			"[o][x][o][x][o][x]";
+			"[x][o][x][o][x][o]\n" +
+			"[o][x][o][x][o][x]\n";
 		// Act
 		const GENERATED_DISPLAY = DEFAULT_DRAUGHTBOARD.display();
 		// Assert
