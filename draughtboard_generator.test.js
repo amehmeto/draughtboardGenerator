@@ -119,12 +119,12 @@ describe('Draughtboard displaying', () => {
 			"[x][o][x][o][x][o]\n" +
 			"[o][x][o][x][o][x]\n";
 		// Act
-		const GENERATED_DISPLAY = DEFAULT_DRAUGHTBOARD.display();
+		const GENERATED_DISPLAY = DEFAULT_DRAUGHTBOARD.display(null, null);
 		// Assert
 		expect(GENERATED_DISPLAY).toStrictEqual(EXPECTED_DISPLAY);
 	});
 
-	it('should display white as [-] when white paramter is -', () => {
+	it('should display white as [-] when white parameter is -', () => {
 		//Arrange
 		const DEFAULT_DRAUGHTBOARD = new Draughtboard(null, null);
 		const EXPECTED_DISPLAY =
@@ -140,5 +140,19 @@ describe('Draughtboard displaying', () => {
 		expect(GENERATED_DISPLAY).toStrictEqual(EXPECTED_DISPLAY);
 	});
 
-
+	it('should display white as [w] and black as [b] when parameter are w and b', () => {
+		//Arrange
+		const DEFAULT_DRAUGHTBOARD = new Draughtboard(null, null);
+		const EXPECTED_DISPLAY =
+			"[b][w][b][w][b][w]\n" +
+			"[w][b][w][b][w][b]\n" +
+			"[b][w][b][w][b][w]\n" +
+			"[w][b][w][b][w][b]\n" +
+			"[b][w][b][w][b][w]\n" +
+			"[w][b][w][b][w][b]\n";
+		// Act
+		const GENERATED_DISPLAY = DEFAULT_DRAUGHTBOARD.display('b', 'w');
+		// Assert
+		expect(GENERATED_DISPLAY).toStrictEqual(EXPECTED_DISPLAY);
+	});
 });

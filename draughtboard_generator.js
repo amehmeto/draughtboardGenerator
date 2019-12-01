@@ -61,10 +61,23 @@ class Draughtboard {
         return height % 2 === 0;
     }
 
-    display() {
+    display(black, white) {
         const CELLS_LAYOUT = this.cellsLayout;
-        const DRESSED_CELLS = CELLS_LAYOUT.map(this.dressCellsLineByLine());
+
+        if (!black)
+            black = 'x';
+        if (!white)
+            white = 'o';
+        const DRESSED_CELLS = CELLS_LAYOUT.map(this.dressCellsLineByLine(black, white));
         return this.accumulateLines(DRESSED_CELLS);
+    }
+
+    dressCellsLineByLine(black, white) {
+        return (line) => line.map(this.dressCells(black, white));
+    }
+
+    dressCells(black, white) {
+        return (cell) => (cell === 'black') ? '[' + black + ']' : '[' + white + ']';
     }
 
     accumulateLines(DRESSED_CELLS) {
@@ -79,14 +92,6 @@ class Draughtboard {
         for (let cell of line)
             dressedLines += cell;
         return  dressedLines;
-    }
-
-    dressCellsLineByLine() {
-        return (line) => line.map(this.dressCells());
-    }
-
-    dressCells() {
-        return (cell) => (cell === 'black') ? '[x]' : '[o]';
     }
 }
 
