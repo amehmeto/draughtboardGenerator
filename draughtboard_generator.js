@@ -63,12 +63,18 @@ class Draughtboard {
 
     display() {
         const CELLS_LAYOUT = this.cellsLayout;
-        return CELLS_LAYOUT.map((cell) => {
-            if (cell === 'black')
-                cell = '[x]';
-            if (cell === 'white')
-                cell = '[o]';
-        });
+        const DRESSED_CELLS = CELLS_LAYOUT.map(
+            (line) => line.map(
+                (cell) => (cell === 'black') ? '[x]' : '[o]'
+            )
+        );
+        let dressedLines = '';
+        for (let line of DRESSED_CELLS) {
+            for (let cell of line)
+                dressedLines += cell;
+            dressedLines += "\n";
+        }
+        return dressedLines;
     }
 }
 
