@@ -122,5 +122,23 @@ describe('Draughtboard displaying', () => {
 		const GENERATED_DISPLAY = DEFAULT_DRAUGHTBOARD.display();
 		// Assert
 		expect(GENERATED_DISPLAY).toStrictEqual(EXPECTED_DISPLAY);
-	})
+	});
+
+	it('should display white as [-] when white paramter is -', () => {
+		//Arrange
+		const DEFAULT_DRAUGHTBOARD = new Draughtboard(null, null);
+		const EXPECTED_DISPLAY =
+			"[x][-][x][-][x][-]\n" +
+			"[-][x][-][x][-][x]\n" +
+			"[x][-][x][-][x][-]\n" +
+			"[-][x][-][x][-][x]\n" +
+			"[x][-][x][-][x][-]\n" +
+			"[-][x][-][x][-][x]\n";
+		// Act
+		const GENERATED_DISPLAY = DEFAULT_DRAUGHTBOARD.display(null, '-');
+		// Assert
+		expect(GENERATED_DISPLAY).toStrictEqual(EXPECTED_DISPLAY);
+	});
+
+
 });
