@@ -21,28 +21,28 @@ class Draughtboard {
         return {height, width};
     }
 
-    static generateLines(height, width, finalDraughtboard) {
+    static generateLines(height, width, draughtboard) {
         const EVEN_LINE = this.generateCells('even', width);
         const ODD_LINE = this.generateCells('odd', width);
 
         let LINE = (this.isProcessedLineEven(height)) ? EVEN_LINE : ODD_LINE;
-        finalDraughtboard.unshift(LINE);
+        draughtboard.unshift(LINE);
     }
 
-    static generateCells(oddity, width) {
+    static generateCells(lineOddity, width) {
         let cells = [];
         while (width)
-            this.generateCell(oddity, width--, cells);
+            this.generateCell(lineOddity, width--, cells);
         return cells;
     }
 
-    static generateCell(oddity, width, cells) {
-        const CELL = this.populateAccordingToOddity(oddity, width);
+    static generateCell(lineOddity, width, cells) {
+        const CELL = this.populateAccordingToOddity(lineOddity, width);
         cells.push(CELL);
     }
 
-    static populateAccordingToOddity(oddity, width) {
-        if (oddity === 'even')
+    static populateAccordingToOddity(lineOddity, width) {
+        if (lineOddity === 'even')
             return (width % 2 === 0) ? 'white' : 'black';
         else
             return !(width % 2 === 0) ? 'white' : 'black';
