@@ -181,4 +181,24 @@ describe('Draughtboard generator CLI', () => {
 			);
 		})
 	});
+
+	it('should display 1 line and 2 columns with --height=1 and --width=2 parameters', ()  => {
+		return shellExec(
+			'node checkerboard-generator --height=1 --width=2'
+		). then((stdout) => {
+			expect(stdout.stdout).toBe(
+				"[x][o]\n"
+			);
+		})
+	});
+
+	it('super combo', ()  => {
+		return shellExec(
+			'node checkerboard-generator --height=1 --width=2 --black=mdr --white=lol'
+		). then((stdout) => {
+			expect(stdout.stdout).toBe(
+				"[mdr][lol]\n"
+			);
+		})
+	});
 });
