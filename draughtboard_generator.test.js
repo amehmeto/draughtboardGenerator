@@ -177,7 +177,7 @@ describe('Draughtboard generator CLI', () => {
 		return shellExec('node checkerboard-generator --height=1').
 		then((stdout) => {
 			expect(stdout.stdout).toBe(
-				"[x][o][x][o][x][o]"
+				"[x][o][x][o][x][o]\n"
 			);
 		})
 	});
