@@ -27,41 +27,37 @@ class Draughtboard {
     }
 
     generateLines(height, width, draughtboard) {
-        const EVEN_LINE = this.generateCells('even', width);
-        const ODD_LINE = this.generateCells('odd', width);
-
-        let LINE = (this.isProcessedLineEven(height)) ? EVEN_LINE : ODD_LINE;
+        let LINE = this.generateCells(height, width);
         draughtboard.unshift(LINE);
     }
 
-    generateCells(lineOddity, width) {
+    generateCells(height, width) {
         let cells = [];
         while (width)
-            this.generateCell(lineOddity, width--, cells);
+            this.generateCell(height, width--, cells);
         return cells;
     }
 
-    generateCell(lineOddity, width, cells) {
-        const CELL = this.populateAccordingToOddity(lineOddity, width);
+    generateCell(height, width, cells) {
+        const CELL = this.populateAccordingToOddity(height, width);
         cells.push(CELL);
     }
 
-    populateAccordingToOddity(lineOddity, width) {
-        const IS_CELL_EVEN = width % 2 === 0;
-        return (lineOddity === 'even') ?
-            this.chooseBlackOrWhite(IS_CELL_EVEN) : this.chooseBlackOrWhite(!IS_CELL_EVEN);
-    }
-
-    chooseBlackOrWhite(isCellEven) {
-        return (isCellEven) ? 'white' : 'black';
+    populateAccordingToOddity(height, width) {
+        return (this.isLineEven(height) === this.isColumnEven(width)) ?
+             'white' : 'black';
     }
 
     hasLineToBeProcessed(height) {
         return height !== 0;
     }
 
-    isProcessedLineEven(height) {
+    isLineEven(height) {
         return height % 2 === 0;
+    }
+
+    isColumnEven(width) {
+        return width % 2 === 0;
     }
 
     display(black, white) {
