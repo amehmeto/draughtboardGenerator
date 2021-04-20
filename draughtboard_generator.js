@@ -6,29 +6,19 @@ class Draughtboard {
         this.width = width;
         this.cellsLayout = this.generator(this.height, this.width);
     }
-    generator(height, width) {
-        let finalDraughtboard = [];
 
-        const SIZE_PARAMETERS = this.initializeWithDefaultWhenNull(height, width);
-        height = SIZE_PARAMETERS.height;
-        width = SIZE_PARAMETERS.width;
+    generator(_height, _width) {
+        let finalDraughtboard = [];
+        let { height, width } = { height: _height || DEFAULT, width: _width || DEFAULT };
 
         while (this.hasLineToBeProcessed(height))
             this.generateLines(height--, width, finalDraughtboard);
         return finalDraughtboard;
     }
 
-    initializeWithDefaultWhenNull(height, width) {
-        if (!height)
-            height = DEFAULT;
-        if (!width)
-            width = DEFAULT;
-        return {height, width};
-    }
-
     generateLines(height, width, draughtboard) {
-        let LINE = this.generateCells(height, width);
-        draughtboard.unshift(LINE);
+        let line = this.generateCells(height, width);
+        draughtboard.unshift(line);
     }
 
     generateCells(height, width) {
